@@ -1,0 +1,624 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonProc</name>
+    </assembly>
+    <members>
+        <member name="T:CommonProc.Binary.Binary">
+            <summary>
+            バイナリ化クラス
+            </summary>
+        </member>
+        <member name="M:CommonProc.Binary.Binary.SerializeBinary(System.Object)">
+            <summary>
+            バイナリにシリアライズ
+            </summary>
+            <param name="obj">Serializable なクラス</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Binary.Binary.DeserializeBinary``1(System.Byte[])">
+            <summary>
+            バイナリからデシリアライズ
+            </summary>
+            <typeparam name="T">デシリアライズする型</typeparam>
+            <param name="byteArray">バイナリ</param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Communication.Communication">
+            <summary>
+            通信関連
+            </summary>
+        </member>
+        <member name="M:CommonProc.Communication.Communication.SendPing(System.String,System.Int32)">
+            <summary>
+            指定したIPアドレスにPing送信
+            参考URL:https://msdn.microsoft.com/ja-jp/library/system.net.networkinformation.ping(v=vs.110).aspx
+            </summary>
+            <param name="IPaddress">送信するIPアドレス</param>
+            <param name="timeout">タイムアウトミリ秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Communication.Communication.Post(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            POST送信(UTF-8)
+            </summary>
+            <param name="postURL"></param>
+            <param name="ps">送信するデータ(key:value)</param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Directory.Copy">
+            <summary>
+            ディレクトリをコピー
+            </summary>
+        </member>
+        <member name="M:CommonProc.Directory.Copy.CopyDirectory(System.String,System.String)">
+            <summary>
+            ディレクトリをコピーする
+            
+            コピー先のディレクトリがないときは作る
+            コピー元のディレクトリにあるファイルをコピー
+            コピー元のディレクトリにあるディレクトリについて、再帰的に呼び出す
+            </summary>
+            <param name="sourceDirName">コピーするディレクトリ</param>
+            <param name="destDirName">コピー先のディレクトリ</param>
+        </member>
+        <member name="T:CommonProc.Directory.MakePath">
+            <summary>
+            パス作成
+            </summary>
+        </member>
+        <member name="M:CommonProc.Directory.MakePath.CreateUniqueDirectoryName(System.String,System.Int32)">
+            <summary>
+            フォルダが存在する場合、別名にしてパスを返す
+            存在しない場合、そのまま返却
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.ObjectExtensions">
+            <summary>
+            object 拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.ObjectExtensions.WithComma(System.Object)">
+            <summary>
+            渡された数値を3桁カンマ区切りの文字列に変換して返します
+            </summary>
+            <param name="self">数字型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.ObjectExtensions.InBetween``1(``0,``0,``0)">
+            <summary>
+            ある値が、下限～上限の間に入っているか判定する
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.DateTimeExtensions">
+            <summary>
+            DateTime拡張
+            </summary>
+        </member>
+        <member name="P:CommonProc.Extensions.DateTimeExtensions.FISCAL_START_MONTH">
+            <summary>
+            年度初めの月
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.BeginOfMonth(System.DateTime)">
+            <summary>
+            月初日を返す
+            </summary>
+            <param name="dt">DateTime</param>
+            <returns>Datetime</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.EndOfMonth(System.DateTime)">
+            <summary>
+            月末日を返す
+            </summary>
+            <param name="dt">DateTime</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.DaysInMonth(System.DateTime)">
+            <summary>
+            該当年月の日数を返す
+            </summary>
+            <param name="dt">DateTime</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.StripTime(System.DateTime)">
+            <summary>
+            時刻を落として日付のみにする
+            </summary>
+            <param name="dt">DateTime</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.StripDate(System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+            日付を落として時刻のみにする
+            </summary>
+            <param name="dt">DateTime</param>
+            <param name="base_date">DateTime* : 基準日</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.GetFiscalYear(System.DateTime)">
+            <summary>
+            年度(西暦)
+            例)2016
+            </summary>
+            <param name="dt"></param>
+            <returns>例)2016</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.GetFiscalJYear(System.DateTime)">
+            <summary>
+            年度(和暦:日本語)
+            例)平成28年度
+            </summary>
+            <param name="dt"></param>
+            <returns>例)平成28年度</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.GetFiscalJYear_Head(System.DateTime)">
+            <summary>
+            年度(和暦:頭文字アルファベット)
+            例)H28
+            </summary>
+            <param name="dt"></param>
+            <returns>例)H28</returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.GetJYear(System.DateTime,System.Int32)">
+            <summary>
+            日付を和暦表示
+            type = 0(無指定):平成101010
+            type = 1:平成10年10月10日
+            type = 2:平成10.10.10
+            </summary>
+            <param name="dt"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.GetJYearHead(System.DateTime,System.Int32)">
+            <summary>
+            日付を和暦表示(頭文字アルファベット)
+            type = 0(無指定):H101010
+            type = 1:H10年10月10日
+            type = 2:H10.10.10
+            </summary>
+            <param name="dt"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DateTimeExtensions.getUnixTime(System.DateTime)">
+            <summary>
+            指定時刻の通算秒取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.DecimalExtensions">
+            <summary>
+            decimal拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.DecimalExtensions.GetInteger(System.Decimal)">
+            <summary>
+            整数部取得
+            </summary>
+            <param name="dm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.DecimalExtensions.GetDecimalToStrong(System.Decimal)">
+            <summary>
+            小数部取得
+            文字列で返す
+            </summary>
+            <param name="dm"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.DictionaryExtensions">
+            <summary>
+            Dictionary拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            特定のキーが見つからない場合に規定値を返す
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dictionary"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.IEnumerableExtensions">
+            <summary>
+            IEnumerable拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.IEnumerableExtensions.Chunk``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            大量のデータを、ある個数ごとに分割して返す
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">大量のデータ</param>
+            <param name="chunkSize">ある個数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.IEnumerableExtensions.StringJoin``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            LINQの流れで文字列にする
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Extensions.IntExtensions">
+            <summary>
+            int拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.IntExtensions.ToDatetime(System.Int32)">
+            <summary>
+            通算秒を日付データに変換する
+            </summary>
+            <param name="unixTime">通算秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.IntExtensions.ToTextTime(System.Int32)">
+            <summary>
+            通算秒を文字列の時間に変える
+            </summary>
+            <param name="unixTime">通算秒</param>
+            <returns>00:00:00形式</returns>
+        </member>
+        <member name="T:CommonProc.Extensions.StringExtensions">
+            <summary>
+            string拡張
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.LeftZeroFill(System.String,System.Int32)">
+            <summary>
+            引数で指定された桁数になるまで左0埋め
+            </summary>
+            <param name="st"></param>
+            <param name="digit">桁数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.RightZeroFill(System.String,System.Int32)">
+            <summary>
+            引数で指定された桁数になるまで右0埋め
+            </summary>
+            <param name="st"></param>
+            <param name="digit">桁数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.GetStr(System.String,System.String)">
+            <summary>
+            文字列から指定正規表現に一致するもののみ取得
+            </summary>
+            <param name="st"></param>
+            <param name="regular"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.Right(System.String,System.Int32)">
+            <summary>
+            文字列の末尾から指定した長さの文字列を取得する
+            </summary>
+            <param name="str"></param>
+            <param name="len">長さ</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.ToUnixTime(System.String)">
+            <summary>
+            文字列の時間を通算秒に変える
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.CountStringByte(System.String,System.Text.Encoding)">
+            <summary>
+            文字列のバイト長を取得
+            </summary>
+            <param name="target">文字列</param>
+            <param name="enc">エンコード</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.SnakeToUpperCamel(System.String)">
+            <summary>
+            スネークケースをアッパーキャメル(パスカル)ケースに変換します
+            例) quoted_printable_encode → QuotedPrintableEncode
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.SnakeToLowerCamel(System.String)">
+            <summary>
+            スネークケースをローワーキャメル(キャメル)ケースに変換します
+            例) quoted_printable_encode → quotedPrintableEncode
+            </summary>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.UpperCamelToSnake(System.String)">
+            <summary>
+            アッパーキャメル(パスカル)ケースをスネークケースに変換します
+            例) QuotedPrintableEncode → quoted_printable_encode
+            </summary>
+            <param name="self"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Extensions.StringExtensions.LowerCamelToSnake(System.String)">
+            <summary>
+            ローワーキャメル(パスカル)ケースをスネークケースに変換します
+            例) quotedPrintableEncode → quoted_printable_encode
+            </summary>
+            <param name="self"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.LateBinding.LateBinding">
+            <summary>
+            レイトバインド
+            </summary>
+        </member>
+        <member name="M:CommonProc.LateBinding.LateBinding.CreateObject(System.String,System.String)">
+            <summary>
+            COMオブジェクトへの参照を作成および取得
+            </summary>
+            <param name="progId">作成するオブジェクトのプログラムID</param>
+            <param name="serverName">オブジェクトが作成されるネットワークサーバ名</param>
+            <returns>作成されたCOMオブジェクト</returns>
+        </member>
+        <member name="M:CommonProc.LateBinding.LateBinding.CreateObject(System.String)">
+            <summary>
+            COMオブジェクトへの参照を作成および取得します
+            </summary>
+            <param name="progId">作成するオブジェクトのプログラムID</param>
+            <returns>作成されたCOMオブジェクト</returns>
+        </member>
+        <member name="T:CommonProc.File.Encode">
+            <summary>
+            ファイルエンコード
+            </summary>
+        </member>
+        <member name="M:CommonProc.File.Encode.EncodeBase64(System.String)">
+            <summary>
+            BASE64エンコード
+            </summary>
+            <param name="filePath"></param>
+            <returns>BASE64形式</returns>
+        </member>
+        <member name="T:CommonProc.File.MakePath">
+            <summary>
+            パス作成
+            </summary>
+        </member>
+        <member name="M:CommonProc.File.MakePath.CreateUniqueFileName(System.String,System.Int32)">
+            <summary>
+            ファイルが存在する場合、別名にしてパスを返す
+            存在しない場合、そのまま返却
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.File.OpenFile">
+            <summary>
+            ファイルを開く関連
+            </summary>
+        </member>
+        <member name="M:CommonProc.File.OpenFile.OpenFile_RelationSoft(System.String)">
+            <summary>
+            ファイルを関連付けられたソフトで開く
+            </summary>
+            <param name="filepath"></param>
+        </member>
+        <member name="T:CommonProc.Ini.Serialize">
+            <summary>
+            iniファイルシリアライズ
+            </summary>
+        </member>
+        <member name="M:CommonProc.Ini.Serialize.GetPrivateProfileString(System.String,System.String,System.String,System.Text.StringBuilder,System.UInt32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="lpAppName"></param>
+            <param name="lpKeyName"></param>
+            <param name="lpDefault"></param>
+            <param name="lpReturnedString"></param>
+            <param name="nSize"></param>
+            <param name="lpFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Ini.Serialize.GetPrivateProfileInt(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="lpAppName"></param>
+            <param name="lpKeyName"></param>
+            <param name="nDefault"></param>
+            <param name="lpFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Ini.Serialize.Read``1(System.String,System.String)">
+            <summary>
+            iniファイルを読込み、指定したクラス変数に変換
+            </summary>
+            <typeparam name="T">セクション型</typeparam>
+            <param name="section">セクション名</param>
+            <param name="filepath">iniファイルのパス</param>
+            <returns>指定したクラス</returns>
+        </member>
+        <member name="T:CommonProc.MyMath.Combination">
+            <summary>
+            組み合わせ取得
+            </summary>
+        </member>
+        <member name="M:CommonProc.MyMath.Combination.Combinations``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            組み合わせを取得
+            </summary>
+            <typeparam name="T">型</typeparam>
+            <param name="set">データ群</param>
+            <param name="count">組み合わせ数</param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.MyMath.Permutation">
+            <summary>
+            順列取得
+            </summary>
+        </member>
+        <member name="M:CommonProc.MyMath.Permutation.Permutations``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            順列取得
+            </summary>
+            <typeparam name="T">型</typeparam>
+            <param name="set">データ群</param>
+            <param name="count">組み合わせ数</param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Property.GetProperty">
+            <summary>
+            クラスのプロパティを取得
+            </summary>
+        </member>
+        <member name="M:CommonProc.Property.GetProperty.GetPropertyName``1">
+            <summary>
+            プロパティ名
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Property.GetProperty.GetPropertyNameBase``1">
+            <summary>
+            継承元のプロパティ名
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Property.GetProperty.GetPropertyNameAllBase``1">
+            <summary>
+            継承元も全て含んでプロパティ名取得
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Property.GetProperty.GetPropertyValue(System.Object)">
+            <summary>
+            継承元も全て含んだプロパティ値
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.Property.GetProperty.GetPropertyValueBase(System.Object)">
+            <summary>
+            継承元のプロパティ値
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.Sound.Mp3">
+            <summary>
+            mp3 関連クラス
+            </summary>
+        </member>
+        <member name="M:CommonProc.Sound.Mp3.Playback(System.String)">
+            <summary>
+            再生
+            </summary>
+            <param name="mp3filePath">ファイルパス</param>
+        </member>
+        <member name="M:CommonProc.Sound.Mp3.Stop">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="T:CommonProc.Sound.Wave">
+            <summary>
+            WAVEファイル関連
+            </summary>
+        </member>
+        <member name="F:CommonProc.Sound.Wave.player">
+            <summary>
+            再生状態
+            </summary>
+        </member>
+        <member name="M:CommonProc.Sound.Wave.Read(System.String)">
+            <summary>
+            ファイル読み込み
+            </summary>
+            <param name="waveFilePath"></param>
+        </member>
+        <member name="M:CommonProc.Sound.Wave.Play(System.String)">
+            <summary>
+            WAVEファイルを再生する
+            </summary>
+            <param name="waveFilePath">再生するwaveファイルパス</param>
+        </member>
+        <member name="M:CommonProc.Sound.Wave.PlayLooping(System.String)">
+            <summary>
+            WAVEファイルをループ再生する
+            </summary>
+            <param name="waveFilePath">再生するwaveファイルパス</param>
+        </member>
+        <member name="M:CommonProc.Sound.Wave.PlaySync(System.String)">
+            <summary>
+            WAVEファイルを再生する、終わるまで待機
+            </summary>
+            <param name="waveFilePath">再生するwaveファイルパス</param>
+        </member>
+        <member name="M:CommonProc.Sound.Wave.StopSound">
+            <summary>
+            再生されている音を止める
+            </summary>
+        </member>
+        <member name="T:CommonProc.Window.ActiveWindow">
+            <summary>
+            アクティブなウィンドウに対しての処理まとめ
+            </summary>
+        </member>
+        <member name="M:CommonProc.Window.ActiveWindow.Name">
+            <summary>
+            名前を取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonProc.XML.XmlSerialize">
+            <summary>
+            XMLシリアライズ関連
+            </summary>
+        </member>
+        <member name="M:CommonProc.XML.XmlSerialize.ToDictionary_Tag(System.String)">
+            <summary>
+            XML を Dictionary に
+            タグ名がキー(idとかは考慮しない)
+            </summary>
+            <param name="filepath">XMLファイルパス</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.XML.XmlSerialize.ToDictionary_Id(System.String)">
+            <summary>
+            XML を Dictionary に
+            idがキー(タグ名は考慮しない)
+            </summary>
+            <param name="filepath">XMLファイルパス</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.XML.XmlSerialize.ToDictionary_TagAndId(System.String)">
+            <summary>
+            XML を Dictionary に
+            タグ名+idがキー
+            </summary>
+            <param name="filepath">XMLファイルパス</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.XML.XmlSerialize.ToClass``1(System.String)">
+            <summary>
+            XML を クラス に
+            </summary>
+            <typeparam name="T">変換したい型</typeparam>
+            <param name="filepath">XMLファイルパス</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonProc.XML.XmlSerialize.Serialization``1(System.Object,System.String)">
+            <summary>
+            XML化
+            </summary>
+            <typeparam name="T">XML化したい変数の型</typeparam>
+            <param name="obj"></param>
+            <param name="filepath">保存先</param>
+        </member>
+    </members>
+</doc>

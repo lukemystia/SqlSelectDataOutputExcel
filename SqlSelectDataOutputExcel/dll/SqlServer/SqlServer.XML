@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:SqlServer.Connect">
+            <summary>
+            SQL SERVER接続関連
+            </summary>
+        </member>
+        <member name="F:SqlServer.Connect.conn">
+            <summary>
+            コネクション
+            </summary>
+        </member>
+        <member name="M:SqlServer.Connect.#ctor(System.String)">
+            <summary>
+            SQLServer認証接続
+            </summary>
+            <param name="cdstr">接続文字列</param>
+        </member>
+        <member name="M:SqlServer.Connect.#ctor(SqlServer.ConnectData)">
+            <summary>
+            SQLServer認証接続
+            </summary>
+            <param name="cd">接続情報</param>
+        </member>
+        <member name="M:SqlServer.Connect.#ctor(SqlServer.ConnectDataWin)">
+            <summary>
+            Windows認証接続
+            </summary>
+            <param name="cd">接続情報</param>
+        </member>
+        <member name="T:SqlServer.ConnectData">
+            <summary>
+            SQL SERVER 接続情報格納用
+            </summary>
+        </member>
+        <member name="P:SqlServer.ConnectData.UserID">
+            <summary>
+            ユーザ名
+            </summary>
+        </member>
+        <member name="P:SqlServer.ConnectData.Password">
+            <summary>
+            パスワード
+            </summary>
+        </member>
+        <member name="T:SqlServer.ConnectDataWin">
+            <summary>
+            Windows認証 接続情報格納用
+            </summary>
+        </member>
+        <member name="P:SqlServer.ConnectDataWin.DataSource">
+            <summary>
+            サーバ名
+            </summary>
+        </member>
+        <member name="P:SqlServer.ConnectDataWin.InitialCatalog">
+            <summary>
+            DB名
+            </summary>
+        </member>
+        <member name="T:SqlServer.CreateSqlParameter">
+            <summary>
+            SQLパラメータの型指定、サイズ指定等を行う汎用クラス
+            </summary>
+        </member>
+        <member name="M:SqlServer.CreateSqlParameter.CreateParameter(System.String,System.Data.SqlDbType,System.Object)">
+            <summary>
+            サイズ指定不要な場合(Int,DateTimeなど)
+            </summary>
+            <param name="parameterName"></param>
+            <param name="dbType"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SqlServer.CreateSqlParameter.CreateParameter(System.String,System.Data.SqlDbType,System.Int32,System.Object)">
+            <summary>
+            サイズ指定必要な場合(VarCharなど)
+            </summary>
+            <param name="parameterName"></param>
+            <param name="dbType"></param>
+            <param name="size"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SqlServer.CreateSqlParameter.CreateParameter(System.String,System.Data.SqlDbType,System.Byte,System.Byte,System.Object)">
+            <summary>
+            Decimal用
+            </summary>
+            <param name="parameterName"></param>
+            <param name="dbType"></param>
+            <param name="precision"></param>
+            <param name="scale"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SqlServer.GetColumn">
+            <summary>
+            SQLSERVER カラム取得に関する汎用クラス
+            </summary>
+        </member>
+        <member name="M:SqlServer.GetColumn.Get``1(System.Data.SqlClient.SqlDataReader,System.String)">
+            <summary>
+            SqlDataReader からDBNullを考慮しながらデータ取得
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="reader">DB取得レコード</param>
+            <param name="columnName">カラム名</param>
+            <returns>取得できなかった場合その型にあったデータ</returns>
+        </member>
+        <member name="T:SqlServer.IsDBNullParam">
+            <summary>
+            DBがnullの時に代入する固定値
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.INT">
+            <summary>
+            int型
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.INT16">
+            <summary>
+            Int16型
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.INT64">
+            <summary>
+            Int64型
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.STRING">
+            <summary>
+            string型
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.DATETIME">
+            <summary>
+            DateTime型
+            </summary>
+        </member>
+        <member name="P:SqlServer.IsDBNullParam.DECIMAL">
+            <summary>
+            decimal型
+            </summary>
+        </member>
+        <member name="T:SqlServer.Common">
+            <summary>
+            SQL SERVER での汎用処理
+            </summary>
+        </member>
+        <member name="M:SqlServer.Common.ParamForLogString(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            バインドパラメータをValueに置換えたSQL文を返す
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
